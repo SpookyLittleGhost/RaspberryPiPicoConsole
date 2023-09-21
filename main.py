@@ -26,8 +26,12 @@ def rotary_encoder_do_something():
 
 
 def display_do_something(str):
+    display.fill(0)
+
     display_text(str, 0)
     display_text_black(str, 1)
+
+    display.show()
 
 
 def buzzer_do_something():
@@ -47,7 +51,7 @@ def LED_do_something():
 # Parameters
 LED_OFF = (0, 0, 0)
 LED_ON = (0, 20, 30)
-Buffer = 0.1
+Buffer = 3.1
 TONE_OFF = 30000
 TONE_ON = 600
 
@@ -70,7 +74,7 @@ def display_text_black(str, line):
 # Buzzer Setup
 buzzer = pwmio.PWMOut(board.GP27, variable_frequency=True)
 
-buzzer.frequency = TONE_ON
+buzzer.frequency = TONE_OFF
 buzzer.duty_cycle = 32768
 
 # Rotary Encoder Setup
@@ -85,3 +89,28 @@ switch_state = switch.value
 
 # Code
 while True:
+    choice = input("weiter1?")
+    display.fill(0)
+
+    display.show()
+    choice = input("weiter2?")
+    display.fill(1)
+
+    display.show()
+    choice = input("weiter3?")
+
+    display.fill(0)
+
+    display.show()
+    choice = input("weiter4?")
+
+    display_text(f"moin",0)
+
+    display.show()
+    choice = input("weiter5?")
+
+    display_text(f"servus",1)
+    display_text(f"gruezi",2)
+
+    display.show()
+    choice = input("weiter6?")
