@@ -12,6 +12,11 @@ import pwmio
 import digitalio
 import rotaryio
 
+import database
+
+# Rotary Encoder Setup
+encoder = rotaryio.IncrementalEncoder(board.GP7, board.GP6)
+
 
 def rotary_encoder_do_something():
     while True:
@@ -55,7 +60,7 @@ Buffer = 3.1
 TONE_OFF = 30000
 TONE_ON = 600
 
-#RGB LED Setup
+# RGB LED Setup
 pixels = neopixel.NeoPixel(board.GP22, 1)
 
 # Display Setup
@@ -77,9 +82,6 @@ buzzer = pwmio.PWMOut(board.GP27, variable_frequency=True)
 buzzer.frequency = TONE_OFF
 buzzer.duty_cycle = 32768
 
-# Rotary Encoder Setup
-encoder = rotaryio.IncrementalEncoder(board.GP7, board.GP6)
-
 switch = digitalio.DigitalInOut(board.GP26)
 switch.direction = digitalio.Direction.INPUT
 switch.pull = digitalio.Pull.DOWN
@@ -89,28 +91,9 @@ switch_state = switch.value
 
 # Code
 while True:
-    choice = input("weiter1?")
-    display.fill(0)
+    database.save_to_database("yeet")
 
-    display.show()
-    choice = input("weiter2?")
-    display.fill(1)
 
-    display.show()
-    choice = input("weiter3?")
 
-    display.fill(0)
+    time.sleep(50)
 
-    display.show()
-    choice = input("weiter4?")
-
-    display_text(f"moin",0)
-
-    display.show()
-    choice = input("weiter5?")
-
-    display_text(f"servus",1)
-    display_text(f"gruezi",2)
-
-    display.show()
-    choice = input("weiter6?")
